@@ -1,0 +1,10 @@
+services:
+  py-crawler:
+    image: py-crawler
+    build: .
+    volumes:
+      - output:/OUTPUT
+      - repo:/REPO
+volumes:
+  repo:
+  output:

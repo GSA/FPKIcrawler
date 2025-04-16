@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "py-crawler"
+version = "0.1.0"
+description = ""
+authors = ["Credentive <66961157+Credentive-Sec@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "py_crawler"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+asn1crypto = "^1.5.1"
+requests = "^2.28.2"
+ldap3 = "^2.9.1"
+certvalidator = "^0.11.1"
+networkx = "^3.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
