@@ -19,7 +19,7 @@ ENV PATH="${PATH}:${POETRY_VENV}/bin"
 RUN ["apt", "-y", "update"]
 RUN ["apt", "-y", "upgrade"]
 # Install the JRE
-RUN ["apt", "-y", "install", "openjdk-17-jre-headless"]
+RUN ["apt", "-y", "install", "openjdk-21-jre-headless"]
 # Install GI
 RUN ["apt", "-y", "install", "git"]
 # Install curl
