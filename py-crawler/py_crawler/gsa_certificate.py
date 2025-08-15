@@ -246,23 +246,29 @@ class GsaCertificate:
             logger.warning("Unable to get P7C file from %s", url)
             status = "ACCESS ERROR"
 
-        # Process SIA data to extract certs
-        if len(info_access_response.content) > 0:
+        info_access_bytes = info_access_response.content
+
+        # Process XIA data to extract certs
+        if len(info_access_bytes) > 0:
             p7c: Optional[cms.ContentInfo] = None
             try:
-                p7c = cms.ContentInfo.load(info_access_response.content)
+                if pem.detect(info_access_bytes):
+                    _, _, info_access_bytes = pem.unarmor(info_access_bytes)
+
+                p7c = cms.ContentInfo.load(info_access_bytes)
             except ValueError:
                 status = "Invalid P7C"
-
-            status = "OK"
 
             if (
                 p7c != None
                 and type(p7c) == cms.ContentInfo
                 and p7c["content"] is not None
             ):
+                status = "OK"
                 for cert in p7c["content"]["certificates"]:
                     found_certs.append(GsaCertificate(input_bytes=cert.dump()))
+            else:
+                status = "P7C not parsed or has no content"
         else:
             status = "Zero-byte P7C"
 
