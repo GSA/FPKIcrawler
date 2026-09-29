@@ -31,5 +31,8 @@
 # Reason: Bridge CA intermediate loop
 # E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855
 
-# CertiPath G4 return cross certificate to FBCA G4
+# CertiPath return cross certificate to FBCA G4
 4d5cf7b77a430d657bd9f4a852d6fdd2360859b7
+
+# CertiPath return cross certificate to FBCA G5
+cb28250944c716acf59156ca65a3beb8003e2ba4
