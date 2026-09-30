@@ -1,0 +1,38 @@
+# ==============================================================================
+# FPKI CRAWLER - EXCLUDED CERTIFICATE THUMBPRINTS
+# ==============================================================================
+# Certificates listed here will be purged from the final PKCS#7 (.p7b) bundle
+# AFTER the SIA/AIA crawling phase completes.
+#
+# INSTRUCTIONS & FORMATTING RULES:
+# ------------------------------------------------------------------------------
+# 1. Add ONE thumbprint per line, please comment what certificate is being excluded (issuer and subject) in a comment above the thumbprint.
+# 2. Both SHA-1 (40 hex characters) and SHA-256 (64 hex characters) are supported.
+# 3. Formatting is flexible: colons (:) or spaces between hex pairs are ignored,
+#    and inputs are case-insensitive (uppercase or lowercase).
+# 4. Lines starting with '#' are treated as comments and ignored.
+# 5. Empty lines or whitespace-only lines are ignored.
+# 6. You can temporarily disable an exclusion by putting '#' in front of it.
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Known Looping / Problematic Cross-Certificates
+# ------------------------------------------------------------------------------
+
+# Example 1: SHA-1 Thumbprint (Formatted with colons)
+# Reason: Causes trust anchor loop in legacy relying party applications
+# 12:34:56:78:90:AB:CD:EF:12:34:56:78:90:AB:CD:EF:12:34:56:78
+
+# Example 2: SHA-1 Thumbprint (Raw continuous hex string)
+# Reason: Expired cross-certificate looping back to Root
+# A1B2C3D4E5F678901234567890ABCDEF12345678
+
+# Example 3: SHA-256 Thumbprint (Continuous hex)
+# Reason: Bridge CA intermediate loop
+# E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855
+
+# CertiPath return cross certificate to FBCA G4
+4d5cf7b77a430d657bd9f4a852d6fdd2360859b7
+
+# CertiPath return cross certificate to FBCA G5
+cb28250944c716acf59156ca65a3beb8003e2ba4

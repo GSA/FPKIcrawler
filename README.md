@@ -17,6 +17,9 @@ To obtain a github authentication token, follow the instructions at https://docs
 
 Once the token has been issued, copy the contents of the token to a file called "accesstoken" under the dierctory "py-crawler/py_crawler/secrets"
 
+## Excluding specific certificates
+You can now identify specific certificates to remove from the output crawler p7b file by including the certificate thumbprint (SHA1 or SHA256) into the exclude_thumbprints.txt file in the initial py-crawler folder.  This will assist in preventing unintended path looping in relying party applications.
+
 ## Running Py-Crawler
 Once the prerequisites have been met, py-crawler can be executed by running "docker-compose up" from the main repo directory. If necessary, docker-compose will build the docker container and install all necessary tools before executing the tool.
 
