@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 
 def load_excluded_thumbprints() -> set[str]:
     # Resolves to the repo root where exclude_thumbprints.txt lives
-    root_dir = Path(__file__).resolve().parents[2]
+    root_dir = Path(__file__).resolve().parents[1]
     exclude_file = root_dir / "exclude_thumbprints.txt"
 
     if not exclude_file.exists():
